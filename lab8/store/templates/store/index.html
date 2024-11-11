@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warehouse Management System</title>
+    <style>
+        h1 { text-align: center; }
+        h2 { text-align: center; }
+        em { color: blue; font-style: italic; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 8px; text-align: center; border: 1px solid black; }
+        th { font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Warehouse Management System</h1>
+    <h2>Shchur Veronika Mykolayivna, IPZ-21007b</h2>
+
+    <h2>Warehouses</h2>
+    <table>
+        <tr>
+            <th>Warehouse ID</th>
+            <th>Address</th>
+            <th>Manager Name</th>
+            <th>Phone</th>
+        </tr>
+        {% for warehouse in warehouses %}
+        <tr>
+            <td>{{ warehouse.warehouse_id }}</td>
+            <td>{{ warehouse.address }}</td>
+            <td>{{ warehouse.manager_name }}</td>
+            <td>{{ warehouse.phone }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Products</h2>
+    <table>
+        <tr>
+            <th>Product ID</th>
+            <th>Product Type</th>
+            <th>Product Name</th>
+            <th>Manufacturer</th>
+            <th>Warehouse</th>
+            <th>Quantity on Hand</th>
+            <th>Price</th>
+        </tr>
+        {% for product in products %}
+        <tr>
+            <td>{{ product.product_id }}</td>
+            <td>{{ product.product_type }}</td>
+            <td>{{ product.product_name }}</td>
+            <td>{{ product.manufacturer }}</td>
+            <td>{{ product.warehouse.address }}</td>
+            <td>{{ product.quantity_on_hand }}</td>
+            <td>{{ product.price }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Clients</h2>
+    <table>
+        <tr>
+            <th>Client ID</th>
+            <th>Client Name</th>
+            <th>Client Address</th>
+            <th>Phone</th>
+            <th>Contact Person</th>
+        </tr>
+        {% for client in clients %}
+        <tr>
+            <td>{{ client.client_id }}</td>
+            <td>{{ client.client_name }}</td>
+            <td>{{ client.client_address }}</td>
+            <td>{{ client.phone }}</td>
+            <td>{{ client.contact_person }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Sales</h2>
+    <table>
+        <tr>
+            <th>Sale ID</th>
+            <th>Sale Date</th>
+            <th>Client</th>
+            <th>Product</th>
+            <th>Quantity Sold</th>
+            <th>Discount</th>
+        </tr>
+        {% for sale in sales %}
+        <tr>
+            <td>{{ sale.sale_id }}</td>
+            <td>{{ sale.sale_date }}</td>
+            <td>{{ sale.client.client_name }}</td>
+            <td>{{ sale.product.product_name }}</td>
+            <td>{{ sale.quantity_sold }}</td>
+            <td>{{ sale.discount }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
